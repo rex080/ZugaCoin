@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZugaCoin</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Login Form -->
+  <main>
+    <section class="login-wrapper fade">
+      <form class="login-container" onsubmit="myLogin(event)">
+        <div class="login-left">
+          <h1>Welcome Back</h1>
+        </div>
+        <div class="login-right">
+          <div class="input-group">
+            <label for="zugaCoin_ID">ID</label>
+            <input type="text" id="zugaCoin_ID" placeholder="Enter your ID" />
+            <p id="incorrectID">❌ Incorrect ID</p>
+
+            <label for="zugaCoin_Password">Password</label>
+            <input type="password" id="zugaCoin_Password" placeholder="Enter your password" />
+            <p id="incorrectPassword">❌ Incorrect Password</p>
+          </div>
+
+          <div class="checkbox-group">
+            <input type="checkbox" id="remember" />
+            <label for="remember">Remember me</label>
+          </div>
+
+          <div class="btn-group">
+            <button type="submit">Login</button>
+          </div>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <!-- First Loading Screen -->
+  <main id="loading" class="loading">
+    <div class="loading___dot"></div>
+    <div class="loading___dot"></div>
+    <div class="loading___dot"></div>
+    <div class="loading___dot"></div>
+    <div class="loading___dot"></div>
+  </main>
+
+  <!-- Dashboard -->
+  <main>
+    <div id="dashboard" class="dashboard">
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <button class="sidebar__close" onclick="toggleMobileNav()">✖</button>
+        <div class="sidebar__top">
+          <h2 class="sidebar__title">ZugaCoin</h2>
+          <nav class="sidebar__nav">
+            <a href="#" class="sidebar__link active" onclick="showSection('summary')" id="nav-summary">Overview</a>
+            <a href="#" class="sidebar__link" onclick="showSection('history')" id="nav-history">Trade History</a>
+            <a href="#" class="sidebar__link" onclick="showSection('converter')" id="nav-converter">Converter</a>
+            <a href="#" class="sidebar__link logout">Logout</a>
+          </nav>
+        </div>
+        <div class="sidebar__user">
+          <img src="https://i.pravatar.cc/40" alt="User" class="sidebar__avatar" />
+          <div class="sidebar__userinfo">
+            <strong class="sidebar__username">Christopher</strong><br />
+            <small class="sidebar__status">🟢 Active</small>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <div class="main">
+        <header class="main__header">
+          <button class="hamburger" onclick="toggleMobileNav()">☰</button>
+          <h1 class="main__title">Crypto Dashboard</h1>
+        </header>
+
+        <!-- Overview Section -->
+        <section id="summarySection" class="section section--summary">
+          <div class="grid grid--summary">
+            <!-- Profit Card -->
+            <div class="card card--profit">
+              <h3 class="card__title">Total Profit</h3>
+              <p class="card__value">₦57,200</p>
+            </div>
+
+            <!-- Sessions Card -->
+            <div class="card card--sessions">
+              <h3 class="card__title">Active Sessions</h3>
+              <p class="card__value">12</p>
+            </div>
+
+            <!-- Crypto Bot Card -->
+            <div class="card" id="mainApp">
+              <div class="bot-status-title" id="botStatus">Bot Status: Inactive</div>
+              <div class="bot-status-message" id="botMessage">
+                The arbitrage monitoring system is currently offline. Click below to initiate scanning.
+              </div>
+              <button class="bot-toggle-btn" onclick="toggleCryptoBot(this)">Start Monitoring</button>
+            </div>
+            
+            
+          </div>
+        </section>
+
+        <!-- Converter Section -->
+        <section id="converterSection" class="section section--converter hidden card">
+          <h3 class="section__title">💱 USDT to Naira</h3>
+          <input type="number" id="usdt" placeholder="USDT Amount" class="input input--usdt" />
+          <input type="number" id="rate" placeholder="Rate (e.g. 1500)" class="input input--rate" />
+          <h2 class="conversion-result">₦<span id="converted">0.00</span></h2>
+          <button class="button button--convert" onclick="convert()">Convert</button>
+        </section>
+
+        <!-- Trade History Section -->
+        <section id="historySection" class="section section--history hidden card">
+          <h3 class="section__title">📜 Trade History</h3>
+          <ul class="history-list">
+            <li class="history-list__item">SELL - 60 USDT @ ₦1520 - 29 Jun 12:00</li>
+            <li class="history-list__item">BUY - 40 USDT @ ₦1480 - 29 Jun 11:45</li>
+            <li class="history-list__item">SELL - 30 USDT @ ₦1500 - 29 Jun 11:10</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- JavaScript -->
+  <script src="index.js"></script>
+
+</body>
+</html>
